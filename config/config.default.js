@@ -7,9 +7,9 @@
  */
 module.exports = appInfo => {
   /**
-   * built-in config
-   * @type {Egg.EggAppConfig}
-   **/
+	 * built-in config
+	 * @type {Egg.EggAppConfig}
+	 **/
   const config = (exports = {});
 
   // use for cookie sign key, should change to your own and keep security
@@ -40,7 +40,12 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1698049631342_192';
 
   // add your middleware config here
-  config.middleware = [];
+  exports.middleware = [ 'robot' ];
+
+  // robot's configurations
+  exports.robot = {
+    ua: [ /Baiduspider/i ],
+  };
 
   // 添加 view 配置
   exports.view = {
