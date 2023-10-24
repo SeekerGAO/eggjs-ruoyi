@@ -42,6 +42,14 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+  // 添加 view 配置
+  exports.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.tpl': 'nunjucks',
+    },
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
