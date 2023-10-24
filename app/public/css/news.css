@@ -1,0 +1,11 @@
+.news-view .item a {
+	color: #000000;
+	text-decoration: none;
+}
+.news-view .item a:visited {
+	color: #828282;
+}
+.news-view .item span {
+	color: #828282;
+  font-size: 12px;
+}
