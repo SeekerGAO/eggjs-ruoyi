@@ -55,6 +55,12 @@ module.exports = appInfo => {
     },
   };
 
+  exports.alinode = {
+    // 从 `Node.js 性能平台` 获取对应的接入参数
+    appid: '93107',
+    secret: '85c8c55c19d95f4bba33e8c0fa9eb57fb0bb50ee',
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

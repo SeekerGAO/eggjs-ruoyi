@@ -14,4 +14,8 @@ module.exports = {
     enable: true,
     package: 'egg-view-nunjucks',
   },
+  alinode: {
+    enable: true,
+    package: 'egg-alinode',
+  },
 };
