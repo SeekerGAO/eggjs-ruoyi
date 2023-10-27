@@ -18,4 +18,12 @@ module.exports = {
     enable: true,
     package: 'egg-alinode',
   },
+  validate: {
+    enable: true,
+    package: 'egg-validate',
+  },
+  bcrypt: {
+    enable: true,
+    package: 'egg-bcrypt',
+  },
 };

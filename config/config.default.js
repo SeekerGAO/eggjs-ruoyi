@@ -61,6 +61,12 @@ module.exports = appInfo => {
     secret: '85c8c55c19d95f4bba33e8c0fa9eb57fb0bb50ee',
   };
 
+  config.security = {
+    csrf: {
+      headerName: 'x-csrf-token', // 通过 header 传递 CSRF token 的默认字段为 x-csrf-token
+    },
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
