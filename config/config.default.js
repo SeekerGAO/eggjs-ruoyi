@@ -67,6 +67,13 @@ module.exports = appInfo => {
     },
   };
 
+  config.jwt = {
+    secret: 'QGcEv0BSJIT7CnfX46CLk5fv44csGe3a', // 自定义 token 的加密条件字符串
+    sign: {
+      expiresIn: 24 * (60 * 60), // token 过期时间，单位为秒
+    },
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

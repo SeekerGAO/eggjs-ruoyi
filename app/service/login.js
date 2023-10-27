@@ -11,7 +11,8 @@ class LoginService extends Service {
       // 比对密码
       const checked = await ctx.compare(password, user.password);
       if (checked) {
-        return user;
+        const token = await ctx.helper.generateJWT({ user });
+        return token;
       }
     }
     return null;
