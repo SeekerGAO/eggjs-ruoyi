@@ -14,15 +14,18 @@
     "egg-jwt": "^3.1.7",
     "egg-mysql": "^4.0.0",
     "egg-scripts": "^2",
+    "egg-sequelize": "^6.0.0",
     "egg-validate": "^2.0.2",
-    "egg-view-nunjucks": "^2.3.0"
+    "egg-view-nunjucks": "^2.3.0",
+    "mysql2": "^3.6.2"
   },
   "devDependencies": {
     "egg-bin": "^5",
     "egg-ci": "^2",
     "egg-mock": "^5",
     "eslint": "^8",
-    "eslint-config-egg": "^12"
+    "eslint-config-egg": "^12",
+    "sequelize-cli": "^6.6.1"
   },
   "engines": {
     "node": ">=16.0.0"

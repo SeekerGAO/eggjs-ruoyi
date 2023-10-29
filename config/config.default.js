@@ -36,6 +36,19 @@ module.exports = appInfo => {
     agent: false,
   };
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username: 'root',
+    password: 'root',
+    database: 'ry-vue',
+    define: {
+      freezeTableName: true,
+      timestamps: false,
+    },
+  };
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1698049631342_192';
 
