@@ -11,4 +11,5 @@ module.exports = app => {
   router.get('/news', controller.news.list);
   router.get('/user/list', verifyJWT, controller.user.list);
   router.post('/login', controller.login.index);
+  router.resources('sysUser', '/sysUser', controller.sysUser);
 };
