@@ -6,6 +6,7 @@ node_modules/
 *-lock.yaml
 yarn.lock
 coverage/
+.history/
 .idea/
 run/
 .DS_Store
