@@ -80,6 +80,11 @@ module.exports = appInfo => {
     },
   };
 
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
+
   config.jwt = {
     secret: 'QGcEv0BSJIT7CnfX46CLk5fv44csGe3a', // 自定义 token 的加密条件字符串
     sign: {
