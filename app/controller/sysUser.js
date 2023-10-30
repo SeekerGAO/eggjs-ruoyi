@@ -5,50 +5,91 @@ const Controller = require('egg').Controller;
 class SysUserController extends Controller {
   async index() {
     const ctx = this.ctx;
-    const { pageNum = 1, pageSize = 10 } = ctx.query;
+    const toInteger = ctx.helper.lodash.toInteger;
     const query = {
-      pageNum,
-      pageSize,
+      pageNum: toInteger(ctx.query.pageNum) || 1,
+      pageSize: toInteger(ctx.query.pageSize) || 10,
     };
-    ctx.body = await ctx.model.SysUser.findAndCountAll(query);
+    const { count, rows } = await ctx.service.sysUser.list(query);
+    ctx.body = {
+      code: 200,
+      data: rows,
+      total: count,
+      msg: '成功',
+    };
   }
 
   async show() {
     const ctx = this.ctx;
-    ctx.body = await ctx.model.SysUser.findByPk(ctx.params.id);
+    const user = await ctx.service.sysUser.find(ctx.params.id);
+    if (user) {
+      ctx.body = {
+        code: 200,
+        data: user,
+        msg: '成功',
+      };
+    } else {
+      ctx.body = {
+        code: 500,
+        msg: '失败',
+      };
+    }
   }
 
   async create() {
     const ctx = this.ctx;
-    const { username, password, nickname } = ctx.request.body;
-    const user = await ctx.model.SysUser.create({ user_name: username, password, nick_name: nickname });
-    ctx.body = user;
+    const { user_name, password, nick_name } = ctx.request.body;
+    if (user_name && password && nick_name) {
+      const user = await ctx.service.sysUser.create(ctx.request.body);
+      if (user) {
+        ctx.body = {
+          code: 200,
+          msg: '成功',
+        };
+      } else {
+        ctx.body = {
+          code: 500,
+          msg: '失败',
+        };
+      }
+    } else {
+      ctx.body = {
+        code: 500,
+        msg: '参数错误',
+      };
+    }
   }
 
   async update() {
     const ctx = this.ctx;
-    const user = await ctx.model.SysUser.findByPk(ctx.params.id);
-    if (!user) {
-      ctx.status = 404;
-      return;
+    const user = await ctx.service.sysUser.update(ctx.params.id, ctx.request.body);
+    if (user) {
+      ctx.body = {
+        code: 200,
+        msg: '成功',
+      };
+    } else {
+      ctx.body = {
+        code: 500,
+        msg: '失败',
+      };
     }
-
-    const { nickname } = ctx.request.body;
-    await user.update({ nick_name: nickname });
-
-    ctx.body = user;
   }
 
   async destroy() {
     const ctx = this.ctx;
-    const user = await ctx.model.SysUser.findByPk(ctx.params.id);
-    if (!user) {
-      ctx.status = 404;
-      return;
+    const user = await ctx.service.sysUser.del(ctx.params.id);
+    if (user) {
+      ctx.body = {
+        code: 200,
+        msg: '成功',
+      };
+    } else {
+      ctx.body = {
+        code: 500,
+        msg: '失败',
+      };
     }
-
-    await user.destroy();
-    ctx.status = 200;
   }
 }
 
