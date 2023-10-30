@@ -76,7 +76,7 @@ module.exports = appInfo => {
 
   config.security = {
     csrf: {
-      headerName: 'x-csrf-token', // 通过 header 传递 CSRF token 的默认字段为 x-csrf-token
+      enable: false,
     },
   };
 
