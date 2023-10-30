@@ -1,8 +1,10 @@
+const lodash = require('lodash');
 const dayjs = require('dayjs');
 const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
 
 module.exports = {
+  lodash,
   // 时间戳转换为相对时间
   relativeTime: time => dayjs(new Date(time * 1000)).fromNow(),
   // 生成JWT
