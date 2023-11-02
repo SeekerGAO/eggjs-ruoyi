@@ -14,4 +14,6 @@ module.exports = app => {
   router.resources('sysUser', '/sysUser', controller.sysUser);
 
   io.of('/').route('chat', io.controller.chat.index);
+  io.of('/').route('message', io.controller.chat.message);
+  io.of('/').route('join', io.controller.chat.join);
 };
