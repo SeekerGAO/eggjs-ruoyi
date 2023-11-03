@@ -13,6 +13,8 @@ class ChatController extends Controller {
     const socketId = ctx.socket.id;
     console.log('socketId:', userId, socketId);
     ctx.socket.join('all');
+    ctx.socket.emit('joined', userId);
+    // ctx.socket.to('all').emit("joined", userId);
     await ctx.app.redis.set(userId, socketId);
   }
   async message() {
@@ -20,7 +22,7 @@ class ChatController extends Controller {
     const message = ctx.args[0];
     const { userId, msg } = message;
     if (userId === 'ADMIN') {
-      ctx.socket.to('all').emit('msg', { msg });
+      ctx.socket.to('all').emit('msg', { userId, msg });
       return;
     }
     const socketId = await this.ctx.app.redis.get(userId);
