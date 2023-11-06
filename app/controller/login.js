@@ -10,6 +10,8 @@ class LoginController extends Controller {
       ctx.validate({
         username: { type: 'string' },
         password: { type: 'string' },
+        code: { type: 'string' },
+        uuid: { type: 'string' },
       });
       const result = await ctx.service.login.index(ctx.request.body);
       if (result) {

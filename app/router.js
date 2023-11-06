@@ -10,6 +10,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/news', controller.news.list);
   router.get('/user/list', verifyJWT, controller.user.list);
+  router.get('/captchaImage', controller.util.captchaImage);
   router.post('/login', controller.login.index);
   router.resources('sysUser', '/sysUser', controller.sysUser);
 
