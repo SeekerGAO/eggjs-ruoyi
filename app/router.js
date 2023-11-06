@@ -6,12 +6,13 @@
 module.exports = app => {
   const { router, controller, io } = app;
   const verifyJWT = app.middleware.verifyJWT();
+  const verifyCaptcha = app.middleware.verifyCaptcha();
 
   router.get('/', controller.home.index);
   router.get('/news', controller.news.list);
   router.get('/user/list', verifyJWT, controller.user.list);
   router.get('/captchaImage', controller.util.captchaImage);
-  router.post('/login', controller.login.index);
+  router.post('/login', verifyCaptcha, controller.login.index);
   router.resources('sysUser', '/sysUser', controller.sysUser);
 
   io.of('/').route('chat', io.controller.chat.index);
