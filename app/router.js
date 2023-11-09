@@ -12,6 +12,7 @@ module.exports = app => {
   router.get('/news', controller.news.list);
   router.get('/user/list', verifyJWT, controller.user.list);
   router.get('/captchaImage', controller.util.captchaImage);
+  router.get('/getInfo', verifyJWT, controller.login.getInfo);
   router.post('/login', verifyCaptcha, controller.login.index);
   router.resources('sysUser', '/sysUser', controller.sysUser);
 

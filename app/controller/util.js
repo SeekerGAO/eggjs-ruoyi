@@ -19,6 +19,7 @@ class UtilController extends Controller {
     ctx.body = {
       code: 200,
       img: captcha.data,
+      text: captcha.text,
       uuid,
       msg: '成功',
     };

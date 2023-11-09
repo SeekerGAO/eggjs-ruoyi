@@ -23,6 +23,23 @@ class LoginService extends Service {
     }
     return null;
   }
+
+  async getInfo() {
+    const { ctx } = this;
+    const token = ctx.headers.authorization ? ctx.headers.authorization.split(' ')[1] : '';
+    const { user } = ctx.app.jwt.verify(token, ctx.app.config.jwt.secret);
+    const { user_id } = user;
+    const roles = [];
+    const permissions = [];
+    if (user_id === 1) {
+      roles.push('admin');
+      permissions.push('*:*:*');
+    } else {
+      roles.push('common');
+      permissions.push('*:*:*');
+    }
+    return { user, roles, permissions };
+  }
 }
 
 module.exports = LoginService;

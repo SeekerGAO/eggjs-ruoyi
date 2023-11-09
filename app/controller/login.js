@@ -24,6 +24,16 @@ class LoginController extends Controller {
       ctx.body = { code: 500, msg: '参数错误' };
     }
   }
+
+  async getInfo() {
+    const { ctx } = this;
+    const result = await ctx.service.login.getInfo();
+    ctx.body = {
+      code: 200,
+      ...result,
+      msg: '成功',
+    };
+  }
 }
 
 module.exports = LoginController;
