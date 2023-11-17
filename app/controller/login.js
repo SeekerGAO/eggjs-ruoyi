@@ -28,11 +28,7 @@ class LoginController extends Controller {
   async getInfo() {
     const { ctx } = this;
     const result = await ctx.service.login.getInfo();
-    ctx.body = {
-      code: 200,
-      ...result,
-      msg: '成功',
-    };
+    this.success(result);
   }
 }
 
