@@ -24,7 +24,7 @@ module.exports = app => {
         comment: '公告类型（1通知 2公告）',
       },
       notice_content: {
-        type: Sequelize.LONGBLOB,
+        type: Sequelize.BLOB('long'),
         defaultValue: null,
         comment: '公告内容',
       },
