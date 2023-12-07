@@ -38,7 +38,7 @@ class LoginService extends Service {
       roles.push('common');
       permissions.push('*:*:*');
     }
-    return { data: user, roles, permissions };
+    return { user, roles, permissions };
   }
 }
 

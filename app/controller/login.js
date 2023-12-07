@@ -13,9 +13,9 @@ class LoginController extends Controller {
         code: { type: 'string' },
         uuid: { type: 'string' },
       });
-      const result = await ctx.service.login.index(ctx.request.body);
-      if (result) {
-        ctx.body = { code: 200, data: result, msg: '登录成功' };
+      const token = await ctx.service.login.index(ctx.request.body);
+      if (token) {
+        ctx.body = { code: 200, token, msg: '登录成功' };
       } else {
         ctx.body = { code: 500, msg: '账户或密码错误' };
       }
